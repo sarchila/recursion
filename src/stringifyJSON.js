@@ -7,7 +7,6 @@ var stringifyJSON = function (obj) {
   if (obj === undefined) {
   	finalString = "";
   } else if(Array.isArray(obj)){
-  	console.log("first branch");
   	var reducedStr = _.reduce(obj, function(str,elem,ind){
   		if (ind==0){
   			return str + stringifyJSON(elem);
@@ -19,7 +18,6 @@ var stringifyJSON = function (obj) {
   } else if (typeof(obj)=="string") {
   	finalString = "\"" + obj + "\""
   } else {
-  	console.log("second branch");
   	finalString = obj + "";
   }
   return finalString;
