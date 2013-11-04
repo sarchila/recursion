@@ -4,7 +4,7 @@
 // but you don't so you're going to have to write it from scratch:
 var stringifyJSON = function (obj) {
   var finalString ;
-  if (obj === undefined) {
+  if (obj === undefined || typeof(obj)==="function") {
   	finalString = "";
   } else if(Array.isArray(obj)){
   	var reducedStr = _.reduce(obj, function(str,elem,ind){
@@ -18,7 +18,10 @@ var stringifyJSON = function (obj) {
   } else if (typeof(obj)==="object" && !Array.isArray(obj) && obj != null){
   	var firstTime = true;
   	var reducedStr = _.reduce(obj, function(str,elem,ind){
-  		if (firstTime){
+  	 	if (stringifyJSON(elem) === ""){
+  	 		firstTime = false;
+  	 		return str + "";
+  	 	} else if (firstTime){
   			firstTime = false;
   			return str + stringifyJSON(ind) + ":" + stringifyJSON(elem);
   		} else {
