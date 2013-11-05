@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing</title>
+    <script src="lib/jquery.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="src/getElementsByClassName.js"></script>
+  </head>
+  <body>
+    <script>
+      var htmlStrings = [
+        "<p class='targetClassName'></p>",
+        "<p class='otherClassName targetClassName'></p>",
+        "<p><p class='targetClassName'></p></p>",
+        "<p><p class='targetClassName'><p class='targetClassName'></p></p></p>",
+        "<p><p></p><p><p class='targetClassName'></p></p></p>",
+        "<p><p class='targetClassName'></p><p class='targetClassName'></p></p>",
+        "<p><div class='somediv'><div class='innerdiv'><span class='targetClassName'>yay</span></div></div></p>"
+      ];
+
+      htmlStrings.forEach(function(htmlString){
+        var $rootElement = $(htmlString);
+        $("body").append($rootElement);
+      });
+
+      $(document).ready(function(){
+
+        var resultNodeList = getElementsByClassName("targetClassName");
+        var resultNodes = _.toArray(resultNodeList);
+        var $expectedNodes = $(".targetClassName");
+        var expectedNodes = _.toArray($expectedNodes);
+
+
+        // console.log(expectedNodes);
+        // console.log(resultNodes);
+      });
+    </script>
+  </body>
+</html>
