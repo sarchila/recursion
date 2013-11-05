@@ -4,6 +4,21 @@
 // };
 
 // But in stead we're going to implement it from scratch:
-var getElementsByClassName = function (className) {
-  // your code here
+
+
+var getElementsByClassName = function (className, currentNode, arr) {
+	if (arguments.length<2) {
+		var currentNode = document.body;
+		var arr = [];
+	};
+
+	if (_.contains(currentNode.classList, "targetClassName")){
+		arr.push(currentNode);
+	}
+
+	_.each(currentNode.childNodes, function(childNode){
+		getElementsByClassName(className,childNode,arr);
+	});
+
+	return arr;
 };
