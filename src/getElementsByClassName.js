@@ -7,10 +7,8 @@
 
 
 var getElementsByClassName = function (className, currentNode, arr) {
-	if (arguments.length<2) {
-		var currentNode = document.body;
-		var arr = [];
-	};
+	var currentNode = currentNode || document.body;
+	var arr = arr || [];
 
 	if (_.contains(currentNode.classList, "targetClassName")){
 		arr.push(currentNode);
