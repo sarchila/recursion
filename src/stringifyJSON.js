@@ -60,6 +60,12 @@ var stringifyJSON = function (obj) {
   	obj = obj.split('\\').join('\\\\');
   	// add backslash before quote symbol
   	obj = obj.split('"').join('\\"');
+  	// stringify with \r
+  	obj = obj.split('\r').join('\\r');
+  	// stringify with \n
+  	obj = obj.split('\n').join('\\n');
+  	// stringify with \t
+  	obj = obj.split('\t').join('\\t');
   	finalString = "\"" + obj + "\""
   }
 
