@@ -56,6 +56,10 @@ var stringifyJSON = function (obj) {
 
   // strings have quotes added around them
   else if (typeof(obj)=="string") {
+  	// add backslash before backslash symbol
+  	obj = obj.split('\\').join('\\\\');
+  	// add backslash before quote symbol
+  	obj = obj.split('"').join('\\"');
   	finalString = "\"" + obj + "\""
   }
 
