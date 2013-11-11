@@ -59,11 +59,13 @@ var stringifyJSON = function (obj) {
   	// add backslash before backslash symbol
   	obj = obj.split('\\').join('\\\\');
   	// add backslash before quote symbol
-  	obj = obj.split('"').join('\\"');
-  	// stringify with \r
-  	obj = obj.split('\r').join('\\r');
+  	obj = obj.split('\"').join('\\"');
+  	// stringify with \f
+  	obj = obj.split('\f').join('\\f');
   	// stringify with \n
   	obj = obj.split('\n').join('\\n');
+  	// stringify with \r
+  	obj = obj.split('\r').join('\\r');
   	// stringify with \t
   	obj = obj.split('\t').join('\\t');
   	finalString = "\"" + obj + "\""
